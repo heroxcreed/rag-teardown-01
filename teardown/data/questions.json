@@ -1,0 +1,85 @@
+[
+  {
+    "id": "C2",
+    "category": "L2·跨文档综合",
+    "question": "帐篷的会员价比售价便宜多少？",
+    "must_any": [
+      "130"
+    ],
+    "teardown_note": "Signal example: arithmetic/relational hallucination. Question asks how much cheaper the member price is than the selling price (1299 vs 1169)."
+  },
+  {
+    "id": "D3",
+    "category": "L2·数字变体",
+    "question": "帐篷1299元，有张9折券，券后价是多少？",
+    "must_any": [
+      "1169"
+    ],
+    "teardown_note": "Control: arithmetic done right (1299 x 0.9 = 1169.1), grounded in retrieved price."
+  },
+  {
+    "id": "F1",
+    "category": "L1·拒答策略",
+    "question": "可以打白条吗？",
+    "must_any": [
+      "微信支付",
+      "支付宝"
+    ],
+    "teardown_note": "Signal example: over-refusal. Docs list the supported payment methods; the model refused 3/3 instead of answering."
+  },
+  {
+    "id": "F2",
+    "category": "L1·拒答策略",
+    "question": "你们在北京有几家分店？",
+    "must_any": [
+      "暂未开设",
+      "没有线下",
+      "未开设"
+    ],
+    "teardown_note": "Boundary case: over-refusal on an answerable question (FAQ says no physical stores yet); verdicts were unstable across runs."
+  },
+  {
+    "id": "M2",
+    "category": "L2·多跳推理",
+    "question": "帐篷、睡袋、登山包按重量从重到轻排个序",
+    "must_all": [
+      "2.1",
+      "1.8",
+      "1.2"
+    ],
+    "teardown_note": "Signal example: retrieval cascade. The sleeping-bag weight chunk was never retrieved, so the model abandoned the ranking task."
+  },
+  {
+    "id": "R1",
+    "category": "L1·检索召回",
+    "question": "帐篷内帐用的什么网纱？",
+    "must_any": [
+      "尼龙网纱"
+    ],
+    "refusal_expected": true,
+    "teardown_note": "Signal example: retrieval cascade, other shape. Zero evidence chunks retrieved; the model still answered correctly from parametric memory (ungrounded)."
+  },
+  {
+    "id": "R2",
+    "category": "L1·检索召回",
+    "question": "支持几天无理由退货？",
+    "must_any": [
+      "7天"
+    ],
+    "refusal_expected": true,
+    "ground_fact": "7天无理由",
+    "teardown_note": "Same shape as R1: the \"7 days\" sentence was dropped by the chunker, so a correct-looking answer has zero retrieval evidence."
+  },
+  {
+    "id": "D1",
+    "category": "L2·数字变体",
+    "question": "保修期是24个月还是36个月？",
+    "must_any": [
+      "24个月"
+    ],
+    "forbidden": [
+      "36个月"
+    ],
+    "teardown_note": "Judge-limitation control: \"2 years = 24 months\" is legitimate unit conversion, but the deterministic judge flags it UNGROUNDED_OK (no literal \"24\" in chunks)."
+  }
+]

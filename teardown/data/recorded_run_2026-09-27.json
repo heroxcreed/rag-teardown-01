@@ -1,0 +1,268 @@
+{
+  "meta": {
+    "source": "demo eval/real_model_results_v2.json (2026-09-27), final_verdicts after deterministic re-judge + human review",
+    "model": "deepseek-chat",
+    "temperature": 0.7,
+    "runs_per_question": 3,
+    "note": "Recorded answers for the 8 teardown questions, verbatim. Re-run run_teardown.py and compare your verdicts."
+  },
+  "questions": [
+    {
+      "id": "C2",
+      "category": "L2·跨文档综合",
+      "question": "帐篷的会员价比售价便宜多少？",
+      "recorded_final_verdicts": [
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "人工复核：1299−1169=130，模型 3 遍计算均正确，属合法推理（与 D6 同类）；原判定把正确答案误写为 110，属评测口径错误，已更正",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "云杉2P帐篷的会员价是1169元，售价比会员价便宜130元（1299元 - 1169元 = 130元）。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "云杉2P帐篷的会员价是1169元，售价比会员价便宜130元（1299元 - 1169元 = 130元）。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "云杉2P帐篷的会员价是1169元，售价比会员价便宜130元（1299元 - 1169元 = 130元）。"
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "category": "L2·数字变体",
+      "question": "帐篷1299元，有张9折券，券后价是多少？",
+      "recorded_final_verdicts": [
+        "GROUNDED_OK",
+        "GROUNDED_OK",
+        "GROUNDED_OK"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "1299×0.9=1169.1；chunk 恰好含'1169'（会员价）——字面有依据，但推理路径与依据来源错位，属巧合型有依据",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "GROUNDED_OK",
+          "answer": "云杉2P帐篷售价1299元，使用9折券后价格为：1299 × 0.9 = **1169.1元**。\n\n需要注意的是，这个价格和会员价1169元非常接近。如果您是会员，直接享受会员价1169元即可，无需用券。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "GROUNDED_OK",
+          "answer": "根据产品价格表，云杉2P帐篷售价为1299元。使用9折券后：\n\n1299 × 0.9 = **1169.1元**\n\n券后价约为 **1169.1元**。\n\n另外提醒您：该帐篷本身有会员价1169元，与9折券后的价格基本一致。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "GROUNDED_OK",
+          "answer": "根据价格表，云杉2P帐篷售价为1299元。使用9折券后：\n\n1299 × 0.9 = **1169.1元**\n\n券后价约为 **1169.1元**。\n\n另外提醒一下，这个价格正好接近该产品的会员价1169元，如果您是会员，也可以直接享受会员价购买。"
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "category": "L1·拒答策略",
+      "question": "可以打白条吗？",
+      "recorded_final_verdicts": [
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "文档列明仅支持微信/支付宝/银联（即白条不可用），模型未引用清单而拒答——过度拒答",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "您好，感谢您对云杉户外的关注！关于“打白条”这类支付方式的问题，我这边暂时没有相关信息，建议您联系我们的官方客服或查看购买平台支持的支付方式，以平台实际结算页面为准哦～\n\n如果您有关于云杉2P帐篷或极光-10℃羽绒睡袋等产品的问题，欢迎随时问我！"
+        },
+        {
+          "run": 2,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "您好，关于“打白条”这类支付方式的问题，我这边没有相关信息哦。建议您直接联系我们的官方客服或查看购买平台的支付方式说明，以获取准确的付款选项。如果您想了解云杉帐篷或睡袋的产品信息，我很乐意为您解答～"
+        },
+        {
+          "run": 3,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "您好，关于“打白条”这类支付方式，我这里没有相关信息，建议您咨询我们的官方销售渠道或客服热线确认哦～"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "category": "L1·拒答策略",
+      "question": "你们在北京有几家分店？",
+      "recorded_final_verdicts": [
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "",
+        "FAQ 明确'暂未开设线下门店'，3 遍均未引用该答案，属过度拒答"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "您好，关于北京分店的具体数量，目前我这边没有相关门店分布的资料可以查询。建议您通过云杉户外官网或官方客服热线获取准确的门店信息。请问还有其他关于产品的问题我可以帮您吗？"
+        },
+        {
+          "run": 2,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "抱歉，我这边主要提供产品咨询，暂时查不到北京分店的具体信息。建议您通过官方渠道或客服热线确认门店情况。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "抱歉，我这边没有关于北京分店的信息哦。我是云杉户外用品的智能客服助手，主要负责解答产品相关的问题，比如帐篷、睡袋的规格和保修等。如果您需要了解门店信息，建议您通过官方渠道进一步咨询～"
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "category": "L2·多跳推理",
+      "question": "帐篷、睡袋、登山包按重量从重到轻排个序",
+      "recorded_final_verdicts": [
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL",
+        "REFUSED_SUBOPTIMAL"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "睡袋重量 1.2kg 在文档中存在，但检索未召回其 chunk（检索缺陷级联）；模型如实说明缺失而非编造",
+        "同上",
+        "同上；放弃排序而非编造"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "根据产品资料，三款产品的重量如下：\n\n- **云杉2P帐篷**：2.1kg\n- **岚山65L登山包**：1.8kg\n- **极光-10℃羽绒睡袋**：资料中未提及具体重量\n\n因此，按重量从重到轻排序为：\n\n1. **云杉2P帐篷**（2.1kg）\n2. **岚山65L登山包**（1.8kg）\n3. **极光-10℃羽绒睡袋**（暂无重量数据）\n\n如果您需要睡袋的具体重量信息，建议查看产品详情页或联系客服确认。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "根据产品资料，三款产品的重量如下：\n\n- **云杉2P帐篷**：2.1kg\n- **岚山65L登山包**：1.8kg\n- **极光-10℃羽绒睡袋**：资料中未提及具体重量\n\n因此，按重量从重到轻排序为：\n\n**云杉2P帐篷（2.1kg）＞ 岚山65L登山包（1.8kg）＞ 极光-10℃羽绒睡袋（重量未标注）**\n\n如果您需要睡袋的准确重量信息，建议查看产品包装或联系客服确认。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "REFUSED_SUBOPTIMAL",
+          "answer": "根据产品资料，三款产品的自重如下：\n\n- **云杉2P帐篷**：2.1kg\n- **岚山65L登山包**：1.8kg\n- **极光-10℃羽绒睡袋**：资料中未标注具体重量，无法参与排序\n\n按重量从重到轻排序为：\n\n**云杉2P帐篷（2.1kg）＞ 岚山65L登山包（1.8kg）**\n\n睡袋因缺少重量数据，暂无法列入排序。如需了解睡袋的具体重量，建议查阅产品包装或联系客服确认。"
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "category": "L1·检索召回",
+      "question": "帐篷内帐用的什么网纱？",
+      "recorded_final_verdicts": [
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "真蒙对：'尼龙网纱'被切散，无 chunk 含完整词，答案只能来自参数记忆",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据产品手册，云杉2P帐篷的内帐采用的是**20D尼龙网纱**，具有透气防蚊的功能。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据产品手册，云杉2P帐篷的内帐采用的是 **20D尼龙网纱**，具有透气防蚊的功能。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据产品手册，云杉2P帐篷的内帐采用的是**20D尼龙网纱**，具有透气防蚊的功能。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "category": "L1·检索召回",
+      "question": "支持几天无理由退货？",
+      "recorded_final_verdicts": [
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "真蒙对：关键句被切分器丢弃，'7天无理由'无任何依据，来自参数记忆",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的退换货政策，自签收之日起**7天内**支持无理由退货。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的退换货政策，自签收之日起**7天内**支持无理由退货。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的退换货政策，自签收之日起 **7天内** 支持退货。如果您需要退货，建议尽快联系客服处理哦！"
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "category": "L2·数字变体",
+      "question": "保修期是24个月还是36个月？",
+      "recorded_final_verdicts": [
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK",
+        "UNGROUNDED_OK"
+      ],
+      "final_stable": true,
+      "adjudication_notes": [
+        "字面规则下无依据（chunk 含'2年'不含'24个月'）；人工复核：换算正确，属合法推理——'无依据'标记需人工复核区分'真蒙对'与'合法推理'",
+        "同上"
+      ],
+      "runs": [
+        {
+          "run": 1,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的保修说明，帐篷类产品享受的是**2年（即24个月）有限保修**。保修范围仅限非人为损坏的结构性故障，如面料开线、拉链脱轨等。人为损坏、正常磨损及私自改装不在保修范围内。"
+        },
+        {
+          "run": 2,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的保修说明，所有帐篷类产品享受 **2年有限保修**，也就是 **24个月**。"
+        },
+        {
+          "run": 3,
+          "final_verdict": "UNGROUNDED_OK",
+          "answer": "根据我们的保修说明，所有帐篷类产品享受 **2年有限保修**，也就是 **24个月**。"
+        }
+      ]
+    }
+  ]
+}
