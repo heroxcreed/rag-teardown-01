@@ -50,4 +50,4 @@ One reproducible example per signal, plus the nearest controls that keep the int
 - `recorded_run_2026-09-27.json` carries the **human-reviewed final verdicts**. Fresh re-runs use the deterministic judge only; run-to-run variation is expected (sampling), the defect patterns were stable across 3 runs in the recorded session.
 - One spec correction to know about: the recorded session's first-round verdict for C2 used a wrong expected answer (110, an eval-side arithmetic error); the reviewed final is UNGROUNDED_OK with the correct 130. The judge in this repo uses the corrected spec — so your C2 verdict will match the recorded *final*, not the recorded first-round label.
 - Corpus and questions stay in Chinese: this retrieval layer is language-sensitive; translating them changes the results. All company names, products, prices, and secrets are fictional.
-- Contact: heroxcreed — heroxcreed275@gmail.com (email only, no calls).
+- Contact: heroxcreed — heroxcreed861@gmail.com (email only, no calls).
